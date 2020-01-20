@@ -78,7 +78,8 @@ class KukaButtonGymEnv(SRLGymEnv):
     def __init__(self, urdf_root=pybullet_data.getDataPath(), renders=False, is_discrete=True, multi_view=False,
                  name="kuka_button_gym", max_distance=0.8, action_repeat=1, shape_reward=False, action_joints=False,
                  record_data=False, random_target=False, force_down=True, state_dim=-1, learn_states=False,
-                 verbose=False, save_path='srl_zoo/data/', env_rank=0, srl_pipe=None, srl_model="raw_pixels", **_):
+                 verbose=False, save_path='srl_zoo/data/', env_rank=0, srl_pipe=None, srl_model="raw_pixels",
+                 cam_dist=1.1, cam_yaw=145, cam_pitch=-36, **_):
         super(KukaButtonGymEnv, self).__init__(srl_model=srl_model,
                                                relative_pos=RELATIVE_POS,
                                                env_rank=env_rank,
@@ -91,9 +92,9 @@ class KukaButtonGymEnv(SRLGymEnv):
         self._renders = renders
         self._width = RENDER_WIDTH
         self._height = RENDER_HEIGHT
-        self._cam_dist = 1.1
-        self._cam_yaw = 145
-        self._cam_pitch = -36
+        self._cam_dist = cam_dist
+        self._cam_yaw = cam_yaw
+        self._cam_pitch = cam_pitch
         self._cam_roll = 0
         self._max_distance = max_distance
         self._shape_reward = shape_reward
